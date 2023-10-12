@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>switch</title>
+		<script>
+			var site;
+			var url;
+			function siteBtn(){
+				site=document.querySelector('input[name="site"]:checked').value;
+				console.log(site);
+				alert(site);
+				switch(site){
+					case "구글": url="http://www.google.com";
+						break;
+					case "다음": url="http://www.daum.net";
+						break;
+					case "네이버": url="http://www.naver.com";
+						break;
+					case "네이트": url="http://www.nate.com";
+						break;
+				}
+				location.href=url;
+			
+			}
+		</script>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<form action="#" method="get">
+			<label>원하는 검색 사이트를 선택하세요.</label>
+			<br>
+			<input type="radio" name="site" id="google" value="구글">
+			<label for="google">구글</label>
+			<input type="radio" name="site" id="daum" value="다음">
+			<label for="daum">다음</label>
+			<input type="radio" name="site" id="naver" value="네이버">
+			<label for="naver">네이버</label>
+			<input type="radio" name="site" id="nate" value="네이트">
+			<label for="nate">네이트</label>
+			<br>
+			<button type="button" onclick="siteBtn()">사이트 이동</button>
+		</form>
+		
+	</body>
+</html>

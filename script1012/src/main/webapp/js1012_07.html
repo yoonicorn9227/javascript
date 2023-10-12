@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>onchange</title>
+		<script></script>
+		<style>
+			*{ margin: 0; padding: 0;}
+			div{width: 200px; height: 100px; border:2px solid black;}
+			table,th,td{border: 1px solid black; border-collapse: collapse;}
+			th,td{width: 100px; height: 40px; text-align: center;}
+			th{background: #efefef;}
+		</style>
+	</head>
+	<body>
+		<script>
+			var count;
+			function selectBtn(){
+				count=document.querySelector("#count").value; //5,10,20
+				content(count);
+			}//selectBtn()
+			
+			
+		</script>
+		<form action="#" method="get">
+			<label>숫자 : </label>
+			<select name="count" id="count" onchange="selectBtn()">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+			</select>
+			
+		</form>
+		<h1>숫자 변경</h1>
+		<table>
+			
+				<thead>
+					<tr>
+						<th>이름</th>
+						<th>국어</th>
+						<th>영어</th>
+						<th>합계</th>
+						<th>평균</th>
+					</tr>
+				</thead>
+			
+			<tbody id="cont">
+			
+			</tbody>
+			<script>
+				var data="";
+				function content(num){
+					data="";//데이터 초기화
+					for(var i=0;i<num;i++){
+						data+="<tr>";
+						data+="<td>홍길동</td>";
+						data+="<td>100</td>";
+						data+="<td>100</td>";
+						data+="<td>200</td>";
+						data+="<td>100</td>";
+						data+="</tr>";
+					}
+					document.querySelector("#cont").innerHTML=data;
+				}//content()
+				
+				content(5);
+			</script>
+		</table>
+	</body>
+</html>

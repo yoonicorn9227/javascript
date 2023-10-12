@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>구구단</title>
+		<style>
+			*{ margin:0; padding: 0;}
+			h1{text-align: center; margin:30px;}
+			table{width: 600px; margin:0 auto;}
+			table,th,td{border: 1px solid black; border-collapse:collapse;}
+			th,td{width: 100px; height: 40px; font-size: 20px; 
+			font-weight: 700; text-align: center;}
+			th{background: #efefef; }
+		</style>
+		<script>
+			var data;
+			function contBtn(){
+				data="";
+				for(var i=2;i<10;i++){
+					if(i%2!=0) continue;
+					data+="<tr><th colspan='5'>"+i+"단</th></tr>"
+					for(var j=1;j<10;j++){
+					data+="<tr><td>"+i+"</td><td>×</td><td>"+j+"</td><td>=</td><td>"+(i*j)+"</td></tr>";
+					}//for2
+					document.querySelector("#cont").innerHTML=data;
+				}//for1
+			}//contBtn()
+		</script>
+	</head>
+	<body>
+		<button type="button" onclick="contBtn()">구구단 출력</button>
+		<h1>구구단</h1>
+		<table id="cont">
+
+			<tr>
+				<td>X</td>
+				<td>×</td>
+				<td>Y</td>
+				<td>=</td>
+				<td>Z</td>
+			</tr>
+		</table>
+		<script>
+			contBtn();
+		</script>
+	</body>
+</html>

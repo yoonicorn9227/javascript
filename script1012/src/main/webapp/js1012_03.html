@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>반복문-while, for</title>
+		<style>
+			*{margin:0; padding: 0;}
+			section{width: 700px; height: 150px; border:3px solid black;
+			margin:50px auto; text-align: center; }
+			h1{margin: 20px 0; }
+			#d01{background: #efefef; width: 500px; height: 50px; 
+				margin:20px auto; }
+		</style>
+	</head>
+	<body>
+		<section>
+			<h1>1부터 100까지 합</h1>
+			<div id="d01"></div>
+		</section>
+		<script>
+			var sum=0;
+			/*  while문 사용 */
+			var i = 1;
+			while(i<=100){
+				sum+=i;
+				i++;
+			}
+			
+			
+			/* for문 사용
+			for(var i=1;i<=100;i++){
+				sum+=i;
+			}
+			*/
+			alert("합계 : " +sum);
+			document.querySelector("#d01").innerText=sum;
+		</script>
+	
+	</body>
+</html>
