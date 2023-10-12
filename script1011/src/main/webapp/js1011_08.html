@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>삼항식</title>
+		<style>
+			*{margin:0; padding: 0;}
+			section{width: 500px; margin:20px auto;}
+			h2{text-align: center; margin-bottom: 20px;}
+			input{height: 30px;}
+			input[type="button"]{width: 100px;}
+			table,th,td{border-collapse: collapse; border:1px solid black;}
+			table{
+				width: 500px;height: 60px; 
+				border-top: 3px solid black; 
+				border-bottom: 3px solid black; 
+				margin:20px auto;}
+				th{background: #efefef;}
+				th,td{text-align: center; font-size: 20px; height: 30px; }
+		</style>
+	</head>
+	<body>
+		<script>
+			var today=new Date();
+			function writeBtn(){
+				alert("테스트");
+				console.log(today); //현재시간
+				console.log(document.querySelector("#name").value); //입력된 글자
+				var name =  document.querySelector("#name").value;
+				document.querySelector("#t01").innerText =  name;
+				document.querySelector("#t02").innerText = today;
+				}
+		</script>
+		<section>
+			<h2>방문자 등록</h2>
+		<input type="text" name="name" id="name">
+		<input type="button" onclick="writeBtn()" value="등록">
+		</section>
+		<table>
+			<colgroup>
+				<col style="width: 50%;">
+				<col style="width: 50%;">
+			</colgroup>
+			<tr>
+				<th>이름</th>
+				<th>방문시간</th>
+			</tr>
+			<tr>
+				<td id="t01"></td>
+				<td id="t02"></td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

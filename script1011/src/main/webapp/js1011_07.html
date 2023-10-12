@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>삼항식</title>
+<!--		<script src="js/script9.js"></script> -->
+		<style>
+			*{margin:0; padding: 0;}
+			table,th,td{border-collapse: collapse; border:1px solid black;}
+			table{
+				width: 500px;height: 60px; 
+				border-top: 3px solid black; 
+				border-bottom: 3px solid black; 
+				margin:20px auto;}
+				th{background: #efefef;}
+				th,td{text-align: center; font-size: 20px; height: 30px; }
+		</style>
+	</head>
+	<body>
+		<script>
+			var a=Number(prompt("1번째 숫자를 입력하세요."));
+			var b=Number(prompt("2번째 숫자를 입력하세요."));
+			var c=Number(prompt("3번째 숫자를 입력하세요."));
+			
+			var result = a>b?(a>=c?a:c):(b>=c?b:c);
+		</script>
+		<table>
+			<colgroup>
+				<col style="width: 50%;">
+				<col style="width: 50%;">
+			</colgroup>
+			<tr>
+				<th>1번째 숫자</th>
+				<td><script>document.write(a,"<br>")</script></td>			
+			</tr>
+			<tr>
+				<th>2번째 숫자</th>
+				<td><script>document.write(b,"<br>")</script></td>			
+			</tr>
+			<tr>
+			<tr>
+				<th>3번째 숫자</th>
+				<td><script>document.write(c,"<br>")</script></td>			
+			</tr>
+			<tr>
+				<th>큰수</th>
+				<td><script>document.write(result,"<br>")</script></td>			
+			</tr>
+		</table>
+
+	</body>
+</html>

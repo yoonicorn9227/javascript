@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>자바스크립트 실습</title>
+		<script>
+			//자바스크립트 주석
+			var age =5; //논리형, 문자형, 정수형, 실수형, 문자열, 객체 -최신버전 변수선언 : var, let:변수(권장함), const:상수
+			var age2 =10;
+			//alert("당신의 나이 : " + age)
+			console.log('당신의 나이 : '+ age)
+		</script>
+	</head>
+	<body>
+		<p>F12를 누루고 console창을 확인하세요.</p>
+		<script>
+			var kor=Number(prompt("국어점수를 입력하세요.","0"));
+			var eng=Number(prompt("영어점수를 입력하세요.","0"));
+			var math=Number(prompt("수학점수를 입력하세요.","0"));
+			document.write("<h1> 국어점수 : "+kor+"</h1>");
+			document.write("<h1> 영어점수 : "+eng+"</h1>");
+			document.write("<h1> 수학점수 : "+math+"</h1>");
+			document.write("<h1> 합계 :"+(kor+eng+math)+"</h1>");
+			document.write("<h1> 평균 :"+(kor+eng+math)/3+"</h1>");
+		</script>
+	
+	</body>
+</html>
