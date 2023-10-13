@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>배열</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<script>
+			var arr = new Array();
+			var arr2 = new Array(1,2,3);
+			var arr3 = [1,2,3];
+			arr.push(1); 
+			arr2.push(4); //배열이 추가생성 (뒤쪽에)
+			arr2.push(5); //마지막에 추가 1,3,5
+			arr.pop(); //제일마지막 삭제
+			arr2.shift()//첫번째 삭제
+			arr2.unshift(5); //배열이 추가생성(앞쪽에) //5,1,2,3,4
+			arr2.splice(2,0,10,11); //2번방에 [0(지정한 번호에 추가)/(,,)추가안함,10과 11이 추가됨] //2번째 방에 10,11추가
+			arr3[5] = 10; //배열이 5개 추가되지만 값이 없는곳은 출력안함
+			arr3.splice(1,1); //1번째 방 1개를 삭제 //arr3.splice(방,개);
+			arr3.splice(1,2); //1번째 방 2개를 삭제
+			
+			document.write(arr,"<br>")
+			document.write(arr2,"<br>")
+			document.write(arr3,"<br>")
+			document.write(arr3.length,"<br>")
+			document.write(arr2.length,"<br>")
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>checkbox 확인</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+	</head>
+	<body>
+		<form action="#" method="get">
+			<label>취미</label>
+			<br>
+			<input type="checkbox" name="hobby" id="game" value="game">
+			<lebel for="game">게임</lebel>
+			<input type="checkbox" name="hobby" id="golf" value="golf">
+			<lebel for="golf">골프</lebel>
+			<input type="checkbox" name="hobby" id="swim" value="swim">
+			<lebel for="swim">수영</lebel>
+			<input type="checkbox" name="hobby" id="book" value="book">
+			<lebel for="book">독서</lebel>
+			<input type="checkbox" name="hobby" id="run" value="run">
+			<lebel for="run">조깅</lebel>
+			<br>
+			<input type="button" onclick="saveBtn()" value="저장">
+		</form>
+		<script>
+			var arr_hobby=["game","golf","book","run"];
+			var hobby="game,golf,book";//String 1개 - "game,golf,swim,book,run";
+			var input=$("input:checkbox[name='hobby']");
+			alert("체크박스 개수 : "+input.length);
+			console.log(input);
+			//5개 checkbox를 1개 가져와서 실행시켜줌.
+			
+			//for문 사용(each 사용 대체가능)
+			for(var i=0;i<input.length;i++){
+				//alert($("input:checkbox[name='hobby']")[i].value);
+				if(hobby.indexOf($("input:checkbox[name='hobby']")[i].value)!=-1){
+					$("input:checkbox[name='hobby']")[i].checked=true;
+				}//if
+			}//for
+			
+			/* each 사용
+			$("input:checkbox[name='hobby']").each(function(){
+				if(hobby.indexOf(this.value)!=-1){
+					this.checked=true;
+				}
+			});
+			*/
+		</script>
+	</body>
+</html>

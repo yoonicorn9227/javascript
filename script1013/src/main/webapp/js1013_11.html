@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			#txt{ width: 300px; height: 100px; border: 1px solid black;
+					font-size: 20px; text-align: center;}
+		</style>
+		<script>
+			var str="hello welcome";
+			function btn(){
+				alert("글자길이 : "+str.length);
+				var txt =$("#name").val();
+				var result =str.indexOf(txt);//찾은 문자위치 출력 :indexOf
+				$("#txt").text("문자위치 : "+(result+1));
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>글자-hello welcome</h1>
+		<input type="button" onclick="arr_print()" value="불러오기">
+		<br>
+		<input type="text" name="name" id="name">
+		<input type="button" onclick="btn()" value="검색">
+		<br>
+		<div id="txt">
+		<!-- 1번 학생정보가 들어옴 -->
+		
+		</div>
+	
+	</body>
+</html>

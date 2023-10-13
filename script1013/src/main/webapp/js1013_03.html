@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>객체_날짜함수2</title>
+			<script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			#content{border: 1px solid  black; width: 200px; height: 100px;
+				font-size: 20px; text-align: center;}
+		</style>
+		<script>
+			function date_find(){
+				var input=document.querySelector("#date").value; //	[var input=$("#date").val();] 동일 제이쿼리 이용
+				alert(input); //확인용
+				//var input2=$("#date").val();
+				//alert("input2"+inpu2);
+				var d=new Date(input); //무슨요일지 알아내기
+				var day=d.getDay();
+				var week;
+				switch(day){
+					case 0: week="일요일"; break;
+					case 1: week="월요일"; break;
+					case 2: week="화요일"; break;
+					case 3: week="수요일"; break;
+					case 4: week="목요일"; break;	
+					case 5: week="금요일"; break;
+					case 6: week="토요일"; break;
+				}//switch
+				document.querySelector("#content").innerText=week;
+				
+			}//date_find()
+		</script>
+	</head>
+	<body>
+		<input type="text" name="date" id="date">
+		<button type="button" onclick="date_find()">요일 확인</button>
+		<div id="content"></div>
+			
+	</body>
+</html>

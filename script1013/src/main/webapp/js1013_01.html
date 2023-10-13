@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>복습정리(value)</title>
+		<style>
+			#content{border: 1px solid  black; width: 200px; height: 100px;}
+		</style>
+		<script>
+			function btn(){
+				var name = document.querySelector("#name").value;
+				if(name==""){
+					alert("이름을 입력해주세요.");
+				 	document.querySelector("#name").focus();
+					return false;
+				}//if
+				alert("이름 : "+name);
+				var kor=document.querySelector("#content").innerText;
+				alert("국어점수 : "+kor);
+				//document.getElementById("[id 이름]")
+				//document.getElementByClassName("[class 이름]")
+				//document.getElementByTagName("[태그]")
+			}//btn()
+		</script>
+	</head>
+	<body>
+		<h1>학생성적프로그램</h1>
+		<form action="#" method="get">
+			<label>이름</label>
+			<input type="text" name="name" id="name">
+			<br>
+			<button type="button" onclick="btn()">저장</button>
+		</form>
+		<div id="content">100</div>
+	</body>
+</html>

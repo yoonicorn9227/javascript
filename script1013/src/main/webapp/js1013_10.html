@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Array</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			#txt{ width: 550px; height: 100px; border: 1px solid black;
+					font-size: 20px; text-align: center;}
+		</style>
+		<script>
+			var stu_arr=[{"stuNo":1,"first_name":"Josi","email":"jfryman0@hugedomains.com","gender":"Female","ip_address":"123.128.181.74"},
+							{"stuNo":2,"first_name":"Molly","email":"mhoovart1@cornell.edu","gender":"Female","ip_address":"226.8.166.239"},
+							{"stuNo":3,"first_name":"Tommy","email":"twaleran2@seesaa.net","gender":"Male","ip_address":"155.83.245.102"},
+							{"stuNo":4,"first_name":"Udall","email":"uyesson3@goodreads.com","gender":"Male","ip_address":"177.230.203.44"},
+							{"stuNo":5,"first_name":"Sile","email":"sdoncaster4@japanpost.jp","gender":"Female","ip_address":"219.25.196.63"},
+							{"stuNo":6,"first_name":"Cherry","email":"dkill5@hatena.ne.jp","gender":"Female","ip_address":"172.139.254.0"},
+							{"stuNo":7,"first_name":"Pietra","email":"ptithecote6@nydailynews.com","gender":"Female","ip_address":"196.61.110.24"},
+							{"stuNo":8,"first_name":"Casper","email":"copfer7@huffingtonpost.com","gender":"Male","ip_address":"221.106.154.166"},
+							{"stuNo":9,"first_name":"Claribel","email":"cladson8@csmonitor.com","gender":"Female","ip_address":"9.127.203.117"},
+							{"stuNo":10,"first_name":"Gerty","email":"gmacallam9@flavors.me","gender":"Female","ip_address":"238.8.101.239"}]
+				
+				function arr_print(){
+					stu_arr[0];
+					console.log(stu_arr[0]);
+					$("#txt").text(stu_arr[0].first_name+","+stu_arr[0].ip_address+","+stu_arr[0].gender+","+stu_arr[0].email);
+				}
+				
+			
+				
+				function btn(){
+					//input박스의 이름을 가져옴.
+					var name=$("#name").val();
+					var sch_student=stu_arr.filter((stu)=>{
+						return stu.first_name==name;
+					});
+					alert("검색되었습니다.")
+					console.log(sch_student);
+					$("#txt").text(sch_student);
+					
+				}//btn()
+				
+		</script>
+	</head>
+	<body>
+		<h1>명단</h1>
+		<input type="button" onclick="arr_print()" value="불러오기">
+		<br>
+		<input type="text" name="name" id="name">
+		<input type="button" onclick="btn()" value="검색">
+		<br>
+		<div id="txt">
+		<!-- 1번 학생정보가 들어옴 -->
+		
+		</div>
+	
+	</body>
+</html>

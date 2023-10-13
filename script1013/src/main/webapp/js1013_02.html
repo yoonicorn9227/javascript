@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>객체 날짜함수</title>
+		<style>
+			
+		</style>
+		<script>
+			var today = new Date();
+			var y=today.getFullYear();
+			var m=today.getMonth();
+			var d=today.getDate();
+			var day=today.getDay();
+			var week;
+			switch(day){
+				case 0: week="일요일"; break;
+				case 1: week="월요일"; break;
+				case 2: week="화요일"; break;
+				case 3: week="수요일"; break;
+				case 4: week="목요일"; break;	
+				case 5: week="금요일"; break;
+				case 6: week="토요일"; break;
+			}//switch
+			
+			document.write(y,"<br>");
+			document.write(m,"<br>");
+			document.write(d,"<br>");
+			document.write(day,"<br>");
+			//2023-10-13 금요일
+			document.write(y+"-"+(m+1)+"-"+d+" "+week,"<br>");
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
