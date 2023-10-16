@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>회원가입</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<style>
+			*{margin:0; padding: 0;}
+			
+		</style>
+		<script>
+			function zipBtn(){
+				//alert("test");
+				new daum.Postcode({
+			    oncomplete: function(data) {
+					console.log(data);
+						$("#zipcode").val(data.zonecode);
+						$("#address1").val(data.address);
+						$("#address2").val(data.jibunAddress);
+						$("#address2_1").val(data.roadAddressEnglish);
+						$("#address3").val();
+			        }
+			    }).open();
+			}//zipBtn()
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<form action="#" method="get">
+			<label>우편번호</label>
+			<input type="text" name="zipcode" id="zipcode">
+			<button type="button" onclick="zipBtn()">우편번호 찾기</button>
+			<br>
+			<label>주소</label><br>
+			<input type="text" name="address1" id="address1" placeholder="도로명 주소">
+			<input type="text" name="address2" id="address2" placeholder="지번주소">
+			<input type="text" name="address2_1" id="address2_1" placeholder="영문도로주소">
+			<br>
+			<input type="text" name="address3" id="address3" placeholder="상세주소">
+		</form>
+	</body>
+</html>

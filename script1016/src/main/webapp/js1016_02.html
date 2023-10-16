@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>screen 객체</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			*{margin: 0; padding: 0;}
+			div{margin: 0 auto; text-align: center; font-size: 20px;}
+			#wrap{width: 300px; height: 300px; margin:0 auto;
+			border: 3px solid black;}
+			#scx,#scy {width:100px; height:60px; border: 1px solid black;}
+			#popup{width: 400px; height: 424px; border: 1px solid black;
+				background: url('images/pop.jpg') no-repeat; 
+				background-size: 50%;
+				position: fixed; left: 500px; top: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="scx">scx : </div>
+			<div id="scy">scy : </div>
+		</div>
+		<div id="popup"></div>
+		<script>
+			$("#scx").text("scx : " + screen.width);
+			$("#scy").text("scy : " + screen.height);
+		</script>
+	
+	</body>
+</html>

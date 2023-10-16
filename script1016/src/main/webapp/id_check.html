@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>아이디 중복체크</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			*{margin: 0; padding: 0;}
+			body{width: 500px; height: 400px; overflow: hidden;}
+			div{width: 500px; height: 400px;  }
+			#txt{font-size: 15px; font-weight: 700; color: red;}
+		</style>
+		<script>
+			var userid;
+			function cbtn(){
+				alert("자식창 input값 : "+$("#ch_id").val());
+				userid =$("#ch_id").val(); //제이쿼리
+				opener.document.querySelector("#id").value = userid;
+				window.close();
+			}//cbtn()
+			
+			function check(){
+				userid=$("#ch_id").val();
+				if(userid=="aaa"){
+					$("#txt").text("다른회원이 사용중입니다. 다른 아이디를 입력하세요.")
+					//alert("다른회원이 사용중입니다. 다른 아이디를 입력하세요.")
+				} else {
+					//alert("아이디 사용이 가능합니다. 아이디 사용 버튼을 클릭하세요.");
+					$("#txt").text("아이디 사용이 가능합니다. 아이디 사용 버튼을 클릭하세요.")
+					$("#txt").css("color","blue");
+				}
+			}//check()
+		</script>
+	</head>
+	<body>
+		<div>
+			<h2>자식창</h2>
+			<form action="#" method="get">
+				<label>아이디를 입력하세요.</label><br>
+				<input type="text" name="ch_id" id="ch_id">
+				<button type="button" onclick="check()">아이디 중복체크</button>
+				<button type="button" onclick="cbtn()">아이디 사용</button>
+			</form>
+			<p id="txt"></p>
+		
+		</div>
+	</body>
+</html>

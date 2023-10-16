@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>부모창_회원가입</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			*{margin:0; padding: 0;}
+			table, th, td{border: 1px solid black; border-collapse: collapse;
+			}
+			td{height: 50px;}
+			td:nth-of-type(1){text-align: center; }
+			td:nth-of-type(2){text-align: left; }
+			button{width: 120px; height: 40px; }
+			#idChk{height: 30px;}
+		</style>
+		<script>
+			var cform;
+			function pop_open(){
+				//alert("test");
+				//부모창 이름
+				
+				cform = window.open("idAllChk.html","id","width=500,height=400,resizable=no,scrollbars=no");
+				}//pop_open()
+				
+				function send_name(){
+					alert($("#name").val());
+					cform.document.querySelector("#cname").innerText=$("#name").val();
+					
+				}//send_name()
+		</script>
+	</head>
+	<body>
+		<h1>회원가입</h1>
+		<table>
+			<colgroup>
+				<col width="100px">
+				<col width="300px">
+			</colgroup>
+			<form action="http://naver.com" method="get">
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" id="name">
+						<button type="button" id="idChk" onclick="send_name()">이름전송</button>
+					</td>
+				</tr>
+				<tr>
+					<td>아이디</td>
+					<td>
+						<input type="text" name="id" id="id">
+						<button type="button" id="idChk" onclick="pop_open()">아이디 중복체크</button>
+					</td>
+				</tr>	
+				<tr>
+					<td>패스워드</td>
+					<td><input type="password" name="pw" id="pw"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button">회원가입</button>
+						<button type="button">취소</button>
+					</td>
+				</tr>
+			</form>
+		</table>
+	</body>
+</html>

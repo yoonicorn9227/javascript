@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>함수1</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			*{margin:0; padding: 0;}
+			section{text-align: center;}
+			.main{width: 100px; height: 70px; border: 1px solid white; text-align: center; 
+			font-size: 20px; font-weight: 700; padding-top: 35px; margin: 0 auto;}
+			div{margin: 0 auto;}
+		</style>
+	</head>
+	<body>
+		<script>
+			//btn()클릭시 input1+input2=#main에 값을 출려하시요.
+			function btn(){
+				var input1= Number($("#input1").val());
+				var input2= Number($("#input2").val());
+				var result=input1+input2;
+				
+				$('.main').text(result);
+				
+			}//btn()
+		</script>
+		<section>
+			<input type="text" name="input1" id="input1"><br>
+			<input type="text" name="input2" id="input2"><br>
+			<button onclick="btn()">버튼</button>
+			<div class="main"></div>
+			
+		</section>
+	</body>
+</html>

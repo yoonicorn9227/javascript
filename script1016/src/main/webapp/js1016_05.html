@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>마우스 포인트 좌표</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+		<style>
+			*{margin:0; padding: 0; }
+			#wrap{width: 200px; height: 100px; border: 3px solid black;}
+			#mouseX,#mouseY{ width: 150px; height: 60px; text-align: center; }
+			#circle{width: 70px; height: 70px; border: 1px solid black;
+			background:url('images/target.png') no-repeat; border-radius: 50%; background-size: 100%;
+			position: absolute; left: 0; top: 0; }
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="mouseX">mouseX : 100</div>
+			<div id="mouseY">mouseY : 100</div>
+		</div>
+		<div id="circle"></div>
+		<script>
+			document.addEventListener("mousemove",function(e){
+				$("#mouseX").text("mouseX : "+e.clientX);
+				$("#mouseY").text("mouseY : "+e.clientY);
+				$("#circle").css("left",e.clientX-25);
+				$("#circle").css("top",e.clientY-25);
+			});
+		</script>
+	</body>
+</html>
