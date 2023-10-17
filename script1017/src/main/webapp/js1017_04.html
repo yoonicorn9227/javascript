@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>함수4_리턴</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style>
+		*{margin:0; padding: 0;}
+		section{text-align: center;}
+		button{width: 120px; height: 40px; margin-top: 30px; }
+		#main{width: 100px; height: 100px; border: 3px solid black; margin: 0 auto; margin-top: 30px; font-size: 40px; font-weight: 700px; padding-top: 50px;}
+	</style>
+	</head>
+	
+	<body>
+		<script>
+			function btn(num1,num2){
+				var result = add(num1,num2);
+				alert(result);
+				$("#main").text(result);
+			}
+			
+			function add(num1,num2){
+				return num1+num2;
+			}
+				
+			
+		</script>
+			<section>
+				<div id="main"></div>
+				<button onclick="btn(10,2)">확인</button>
+			</section>
+			
+		
+	
+	</body>
+</html>

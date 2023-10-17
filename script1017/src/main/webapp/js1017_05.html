@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>제이쿼리-선택자</title>
+		<style>
+			section{width: 300px; height: 300px; border: 3px solid black;
+				margin:30px auto}
+				
+			#txt{text-align: center; width: 300px; height: 100px; font-size: 20px;
+			font-weight: 700;}
+			button{}
+		</style>
+		<script>
+			//제이쿼리 구문선언
+			$(function(){
+				$("#txt").text(10+5);
+				$("#txt").click(function(){
+					alert("테스트")
+				});
+			}); //약식
+			
+			//▼자바스크립트 onclick="btn()" 이벤트 함수호출
+			//function btn(){alert("테스트")} //button에 onclick="btn()" 일때 제이쿼리 바깥 부분에 선언
+			
+			//▼제이쿼리 구문선언2
+			//$(document).ready(function(){});//문서가 준비되면 함수를 실행시켜라!
+			//10+5
+		</script>
+	</head>
+	
+	<body>
+		<section>
+			<div id="txt">0</div>
+		</section>
+		<button id="btn">확인</button>
+	
+	</body>
+</html>
