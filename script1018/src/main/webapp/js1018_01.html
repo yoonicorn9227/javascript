@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>선택자1</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style>
+		*{margin: 0; padding: 0;}
+		ul{list-style: none; text-align: center; }
+		li{width: 130px; height: 50px; border: 3px solid black; }
+		button{width: 60px; height: 25px; margin-top: 20px;}
+	</style>
+	<script>
+		$(function(){
+			$("li").click(function(){
+				//alert($(this).text()); //내가 클릭한(this) 현재 li 글자(text)
+				$(this).css({"background":"yellow","border":"3px solid red"});
+				//$(this).css("border","3px solid greenyellow")
+			});//li
+		
+			$("#btn").click(function(){
+				//alert("test");
+				$("#list li").eq(2).css("background","green");
+				
+			});//btn
+		
+		});//제이쿼리 구문 선언
+	
+	
+	
+	</script>
+	</head>
+	
+	<body>
+		<ul id="list">
+			<li>구글</li>
+			<li>네이버</li>
+			<li>다음</li>
+			<li>네이트</li>
+		</ul>
+		<button id="btn">변경</button>
+	
+	</body>
+</html>

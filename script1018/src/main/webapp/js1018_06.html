@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이벤트change</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			
+		</style>
+		<script>
+			$(function(){
+				$("#email3").change(function(){ //change자리에 on을 쓰면여 러가지 방법 설정가능(click keyup change 등등)  | 	$("#email3").on(click keyup function(){
+					//alert("test")
+					var e_address=$("#email3").val();
+					
+					if(e_address==""){
+						$("#email2").val("");
+						$("#email2").prop("readonly",false); //수정가능
+						$("#email2").focus();
+						return false; //빠져나와라
+					}//if 직접입력
+					
+					$("#email2").val(e_address);
+					$("#email2").prop("readonly",true); //수정불가
+					
+				});//email3.change
+				
+				
+				
+			});//제이쿼리 구문선언
+		</script>
+	</head>
+	
+	<body>
+		<label>이메일을 입력하세요.</label><br>
+		<input type="text" name="email1" id="email1">@
+		<input type="text" name="email2" id="email2">
+		<select name="email3" id="email3">
+			<option value="" selected>직접입력</option>
+			<option value="naver.com">naver.com</option>
+			<option value="gmail.com">gmail.com</option>
+			<option value="daum.net">daum.net</option>
+		</select>
+	
+	
+	</body>
+</html>

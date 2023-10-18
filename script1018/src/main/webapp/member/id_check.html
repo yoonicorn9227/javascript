@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> JARDIN SHOP </title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="JARDIN" />
+<meta name="keywords" content="JARDIN" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/content.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script>
+	$(function(){
+		var temp=0;
+		$(".nbtnbig").click(function(){
+			//alert($("#id").val());
+			if($("#id").val()=="aaa"){
+				//alert("현재 아이디가 사용중입니다.")
+				$(".id_txt").text("현재 아이디가 사용중입니다.");
+				$(".id_txt").css({"color":"red","font-weight":700});
+				temp=0
+			} else {
+				//alert("입력한 아이디는 사용가능 합니다.");
+				$(".id_txt").text("입력한 아이디는 사용가능 합니다.");
+				$(".id_txt").css({"color":"greenyellow","font-weight":700});
+				temp=1
+			}//if
+									
+		});//nbtnbig.click
+		
+		$(".sbtnMini").click(function(){
+			if(temp==1){
+				opener.document.querySelector("#idid").value=$("#id").val();
+				window.close()
+			}else{
+				alert("아이디 중복확인을 하셔야 사용가능합니다.")
+				return false;
+			}
+		});//sbtn.click
+		
+		
+		
+	});//제이쿼리 구문선언
+</script>
+</head>
+<body>
+<div id="layerWrap">
+	<div class="inputWrap">
+			
+		<div class="inputBody">
+			<div class="title"> 아이디 검색 </div>
+			<p class="close"><a onclick="parent.$.fancybox.close();" href="javascript:;"><img src="../images/btn/btn_input_close.gif" alt="닫기" /></a></p>
+			<p class="popalert">사용할 아이디를 입력해 주세요.</p>
+			<div class="inputBox">					
+				<ul class="old">
+					<li><label for="">아이디</label><input type="text" class="w348" id="id" /></li>
+				</ul>
+			</div>
+			<p class="popalert id_txt"></p>
+				<!-- Btn Area -->
+					<div class="btnArea">
+						<div class="bCenter">
+							<ul>
+								<li><a class="nbtnbig">아이디 중복확인</a></li>
+								<li><a class="sbtnMini">아이디 사용</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //Btn Area -->
+		</div>
+	</div>
+<script type="text/javascript">
+$(function() {
+	$('input[name=addresstype]').change(function () {
+		if( $(this).val() === 'new' ){
+			$('.new').show();
+			$('.old').hide();
+		}
+		else{
+			$('.new').hide();
+			$('.old').show();
+		}
+	});
+	$("input[value=day]").attr('checked', 'checked').trigger('change');
+});
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>선택자3_each2</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style>
+		*{margin:0; padding: 0;}
+		div{width: 500px; height: 100px; border: 1px solid black; }
+		form{height: 2000px;}
+		button{width: 100px; height: 20px; font-size: 15px;}
+	</style>
+	<script>
+		$(function(){
+			$("#btn").click(function(){
+				//console.log($("input[type=checkbox]"));	
+					var temp=0;
+				$("input[type=checkbox]").each(function(){
+					if(this.checked == false){
+						temp=1;
+						return false;
+					}//if-this.val
+					
+				});//each
+				
+				/* for문으로 하는 방법 
+				var in_ch = $("input[type=checkbox]");
+				for(var i=0;i<in_ch.length;i++){
+					if(in_ch[i].checked == false){
+						temp=1;
+						break;
+					}//if
+				}//for 
+				*/
+				
+					if(temp==1){
+						//alert("동의를 모두하셔야 회원가입 가능합니다.")
+						if(confirm("동의 모두 하셔야 회원가입이 가능합니다.\n 모두 동의할까요?")){
+							$("input[type=checkbox]").each(function(){
+								this.checked = true;
+							});//each
+						}//if-confrm
+					}//if-temp
+				
+				
+				
+				
+				
+			});//#btn
+		});//제이쿼리 구문 선언
+	</script>
+	</head>
+	
+	<body>
+		<form action="#" method="get" name="frm">
+			<div>1번 항목 내용</div>
+			<label for="agree1">(필수) 1번항목 동의합니다</label>
+			<input type="checkbox" name="agree" id="agree1" value="agree1">
+			<br>
+			<div>2번 항목 내용</div>
+			<label for="agree2">(필수) 2번항목 동의합니다</label>
+			<input type="checkbox" name="agree" id="agree2" value="agree2">
+			<br>
+			<div>3번 항목 내용</div>
+			<label for="agree3">(필수) 3번항목 동의합니다</label>
+			<input type="checkbox" name="agree" id="agree3" value="agree3">
+			<br>
+			<br>
+			<button type="button" id="btn">확인</button>			
+
+		</form>
+	
+	
+	</body>
+</html>

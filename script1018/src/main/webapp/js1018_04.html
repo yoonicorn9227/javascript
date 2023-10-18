@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Map&for&each차이</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			*{margin:0; padding: 0;}
+			div{width: 200px; height: 200px; border: 3px solid black;}
+			button{}
+		</style>
+	</head>
+	<body>
+		<script>
+			$(function(){
+				var arr1=[
+				{"area":"서울","name":"홍길동"},
+				{"area":"부산","name":"유관순"},
+				{"area":"대구","name":"이순신"},
+				{"area":"광주","name":"안중근"},
+				{"area":"서울","name":"김유신"},
+				{"area":"부산","name":"의자왕"},
+				{"area":"서울","name":"김춘추"},
+				];
+
+
+				var arr2 = $.map(arr1,function(data,idx){
+					//console.log("data : "+data.area)
+					//console.log("idx : "+idx)
+					if(data.area=="서울"){
+						return data;
+					}
+				});//arr2
+				
+				console.log(arr2);
+				
+				var hdata="";
+				
+				$(arr2).each(function(idx,data){
+					 hdata+="지역:"+data.area+", 이름 :"+data.name+"<br>";
+				});
+				
+				/* for로 하는방법
+				for(var i=0;i<arr2.length;i++){
+					data+="지역:"+arr2[i].area+", 이름 :"+arr2[i].name+"<br>";
+				}//for
+				*/
+				
+					
+					$("#txt").html(hdata);
+					
+			});//제이쿼리 구문
+		</script>
+		<div id="txt">
+		
+		</div>
+		<button>데이터 가져오기</button>
+		
+	</body>
+</html>

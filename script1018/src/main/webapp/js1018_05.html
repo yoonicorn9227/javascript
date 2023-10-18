@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이벤트(click&keyup&scroll)</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		*{margin:0; padding: 0;}
+		section{position: fixed; width: 500px; height: 300px; }
+		body{height: 3000px;}
+		div{width: 400px; height: 200px; border: 3px solid black;}
+		input{width: 400px; height: 40px; font-size: 30px;}
+		button{width: 120px; height: 60px;}
+		</style>
+		<script>
+			$(function(){
+				//제이쿼리 방식
+				$("#btn").click(function(){
+					//$("#txt").append("네이버<br>");	//누를때 마다 text생성(뒤에 추가) [태그속성도 적용]
+					
+					//var write=$("#memo").val();
+					//$("#txt").append(write);
+				
+				});//btn.click
+			
+				$("#memo").keyup(function(e){
+					console.log(e.keyCode)	
+					if(e.keyCode==13){//키코드(keyCode)가 13(enter)일때 저장
+						$("#txt").append($("#memo").val());	
+						$("#memo").val("");	
+						
+					}//if				
+				
+				});//memo.keyup
+				
+				$(window).on("scroll",function(){
+					 $("#txt").text($(this).scrollTop()); //현재 스크롤박스의 높이를 text박스에 입력
+					 //$(this).scrollTop();
+				});
+			
+			
+			});//제이쿼리 선언 : 전체를 읽고나서  제이쿼리 선언을 읽음
+			
+			//자바스크립트 방식
+			/*
+			function btn(){
+				$("#txt").text("네이버");		
+			}
+			<button id="btn" onclick="btn()">저장</button>
+			*/
+		</script>
+	</head>
+	
+	<body>
+		<section>
+			<div id="txt"></div>
+			<input type="text" name="memo" id="memo"><br>
+			<button id="btn">저장</button>
+		</section>
+	
+	</body>
+</html>
