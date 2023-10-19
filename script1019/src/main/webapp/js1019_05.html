@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ajax-비동기방식(非순차적)_학생성적</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			*{margin: 0; padding: 0;}
+			section{width: 1000px; margin: 50px auto 0; text-align: center;}
+			h1{font-size: 40px;}
+			table{width: 100%; margin-top: 30px; }
+			table,th,td{border: 1px solid black; border-collapse: collapse;}
+			th,td{height: 60px; font-size: 20px; }			
+			button{width: 200px; height: 50px; margin-top: 20px; font-size: 20px; font-weight: 700;}
+			thead{background: darkgray;}
+		</style>
+		<script>
+			$(function(){
+				$("#openBtn").click(function(){
+					var s_url="source/stuscore.json";
+					$.ajax({
+						url:s_url,//링크
+						type:"get",
+						data:"",
+						dataType:"json",
+						success:function(data){//매개변수 이름은 임의로 지정해도됨.
+							alert("데이터 불러오기 성공!")
+							
+							var hdata="";
+							for (var i=0;i<data.length;i++){
+									hdata+="<tr>";
+									hdata+="<td>"+data[i].id+"</td>";						
+									hdata+="<td>"+data[i].first_name +"</td>";						
+									hdata+="<td>"+data[i].kor +"</td>";						
+									hdata+="<td>"+data[i].eng +"</td>";						
+									hdata+="<td>"+data[i].math +"</td>";						
+									hdata+="<td>"+data[i].total +"</td>";						
+									hdata+="<td>"+data[i].avg.toFixed(2) +"</td>";						
+									hdata+="</tr>";						
+							}//for
+							
+								$("#cont2").html(hdata);
+						},//success
+						
+						error:function(){
+							alert("데이터 불러오기 실패!")
+						}//error
+						
+					})//ajax
+						
+				});//click-openBtn
+			
+			});//jquery
+		</script>
+	</head>
+	
+	<body>
+		<section>
+			<h1>학생성적출력</h1>
+			<button id="openBtn">데이터 불러오기</button>
+			<table>
+				<colgroup>
+					<col width="10%">
+					<col width="20%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="15%">
+					<col width="25%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>학생번호</th>
+						<th>학생이름</th>
+						<th>국어성적</th>
+						<th>영어성적</th>
+						<th>수학성적</th>
+						<th>성적합계</th>
+						<th>성적평균</th>
+					</tr>
+				</thead>
+				<tbody id="cont2">
+					
+				</tbody>
+			</table>
+		</section>
+	</body>
+</html>

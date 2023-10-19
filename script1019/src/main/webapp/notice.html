@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>집밥을 특별하게, 쿡킷</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/notice.css">
+		<script>
+			$(function(){
+				//함수선언
+				var read_data=function(){
+					$.ajax({
+						url:"datafile/board.json",
+						type:"get",
+						data:"",
+						dataType:"json",
+						success:function(data){
+							var hdata="";
+							for(var i=0; i<data.length;i++){
+								hdata+="<tr>";
+								hdata+="<td>"+data[i].boardNo +"</td>";
+								hdata+="<td><a>"+data[i].btitle +"</a></td>";
+								hdata+="<td>"+data[i].bdate +"</td>";
+								hdata+="<td>"+data[i].user +"</td>";
+								hdata+="<td>"+data[i].bhit +"</td>";
+								hdata+="</tr>";
+							}//for
+							$("#cont").html(hdata);
+						},//success
+						error:function(){
+							alert("데이터 불러오기 실패!")
+						}//error
+					});//ajax-게시판
+				}//함수선언-ajax
+				
+				read_data(); //함수실행 : 함수를 만드는 이유 -> 코드의 재사용
+
+				//▶검색버튼(돋보기) click시 입력어 검색
+				$(".btn_srch").click(function(){
+					var srh_word=$(".txt").val();
+					$.ajax({
+					url:"datafile/board.json",
+					type:"get",
+					data:"",
+					dataType:"json",
+					success:function(data){
+						var hdata="";
+						for(var i=0; i<data.length;i++){
+							var title=data[i].btitle;
+							if(title.indexOf(srh_word)==-1){
+								continue;
+							}//if-검색어 찾기
+							hdata+="<tr>";
+							hdata+="<td>"+data[i].boardNo +"</td>";
+							hdata+="<td><a>"+data[i].btitle +"</a></td>";
+							hdata+="<td>"+data[i].bdate +"</td>";
+							hdata+="<td>"+data[i].user +"</td>";
+							hdata+="<td>"+data[i].bhit +"</td>";
+							hdata+="</tr>";
+							}//for
+						$("#cont").html(hdata);
+						},//success
+						error:function(){
+							alert("데이터 불러오기 실패!")
+						}//error
+					});//ajax-click
+				});//click-btn_srch
+				
+				//▶enter키 입력시 입력어 검색(keyup활용)
+				$(".txt").keyup(function(e){
+					console.log(e.keyCode);
+					var srh_word=$(".txt").val();
+					if(e.keyCode==13){
+						$.ajax({
+					url:"datafile/board.json",
+					type:"get",
+					data:"",
+					dataType:"json",
+					success:function(data){
+						
+						var hdata="";
+						for(var i=0; i<data.length;i++){
+							var title=data[i].btitle;
+							if(title.indexOf(srh_word)==-1){
+								continue;
+							}//if
+							hdata+="<tr>";
+							hdata+="<td>"+data[i].boardNo +"</td>";
+							hdata+="<td><a href='#'>"+data[i].btitle +"</a></td>";
+							hdata+="<td>"+data[i].bdate +"</td>";
+							hdata+="<td>"+data[i].user +"</td>";
+							hdata+="<td>"+data[i].bhit +"</td>";
+							hdata+="</tr>";
+						}//for
+						$("#cont").html(hdata);
+						},//success
+							error:function(){
+							alert("데이터 불러오기 실패!")
+							}//error
+						});//ajax-keyUp
+					alert("엔터키가 입력되었습니다!")
+					}//if-keyCode
+				});//keyup-txt
+				
+			});//jqeury
+		</script>
+	</head>
+	<body>
+		<nav id="top">
+			<div>
+				<ul>
+					<a href="#"><li>회원가입</li></a>
+					<a href="#"><li>로그인</li></a>
+					<a href="#"><li>고객행복센터</li></a>
+					<a href="#"><li>기프트카드 등록</li></a>
+				</ul>
+			</div>
+		</nav>
+		<header>
+			<div class="logo"><a href="#"><h1></h1></a></div>
+			<div class="menu">
+				<ul>
+					<a href="#"><li>COOKIT소개</li></a>
+					<a href="#"><li>COOKIT메뉴</li></a>
+					<a href="#"><li>리뷰</li></a>
+					<a href="#"><li>이벤트</li></a>
+					<a href="#"><li>MY쿡킷</li></a>
+				</ul>
+			</div>
+			<div class="i_menu">
+				<ul>
+					<a href="#"><li>
+						<div class="i_menu_1"></div>
+						<div>장바구니</div>
+					</li></a>
+					<a href="#"><li>
+						<div class="i_menu_2"></div>
+						<div>메뉴찾기</div>
+						</li></a>
+				</ul>
+			</div>
+		</header>
+		<section id="sect">
+			<h1 id="tit" class="title" >고객행복센터</h1>
+			<!-- 검색창 영역  -->
+			<div class="f_search">
+				<h2>NOTICE 검색</h2>
+				<div class="box_search">
+					<div class="sch_wrap">
+						<form action="#" method="get" onsubmit="return false">		
+							<input type="text" class="txt" id="fn_txt_srch"
+							placeholder="검색어를 입력해주세요" name="keyWord" required>
+							<button class="ico" type="button"></button>
+							<button class="btn_srch" type="button"></button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- 게시판 영역 -->
+			<div class="notice_conts">
+				<div class="tb_row">
+					<table>
+						<colgroup>
+						   <col width="10%">
+						   <col width="54%">
+						   <col width="13%">
+						   <col width="13%">
+						   <col width="10%">
+						</colgroup>
+						<thead>
+							
+						</thead>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>조회수</th>
+							</tr>
+						<tbody id="cont">
+							
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+			<!-- 글쓰기버튼 -->
+			<div class="write_btn">글쓰기</div>
+			
+			<!-- 하단넘버링 영역 -->
+			<div class="pagination">
+				<a href="#"><span>　</span></a>
+				<a href="#"><span>　</span></a>
+				<span class="page_num">
+					<a href="#"><span>1</span></a>
+					<a href="#"><span>2</span></a>
+					<a href="#"><span>3</span></a>
+					<a href="#"><span>4</span></a>
+					<a href="#"><span>5</span></a>
+				</span>
+				<a href="#"><span>　</span></a>
+				<a href="#"><span>　</span></a>
+			</div>
+		</section>
+		
+		<a href="#top"><div class="top_btn"></div></a>
+		
+		<!-- footer영역 -->
+		<footer>
+			<div class="footer_wrap">
+				<div class="fl_l"><div><a href=""></a></div></div>
+				<div class="fl_c">
+					<ul>
+						<a href="#"><li>이용약관</li></a>
+						<a href="#"><li>개인정보처리방침</li></a>
+						<a href="#"><li>법적고지</li></a>
+						<a href="#"><li>사업자정보확인</li></a>
+					</ul>
+					<div>
+						<p>씨제이제일제당(주) | 대표이사 : 손경식, 최은석 | 사업자등록번호 : 104-86-09535</p>
+						<p>주소 : 서울 중구 동호로 330 CJ제일제당 센터 (우) 04560 | 통신판매업신고 중구 제 07767호 | 개인정보보호책임자 : 류화정</p>
+						<p>이메일 : cjon@cj.net | 호스팅제공자 : CJ올리브네트웍스㈜</p>
+						<p>고객님은 안전거래를 위해 현금등으로 결제시 LG U+ 전자 결제의 매매보호(에스크로) 서비스를 이용하실 수 있습니다.
+							<span>가입 사실 확인</span></p>
+						<p >© CJ CHEILJEDANG CORP. ALL RIGHTS RESERVED.</p>
+					</div>
+				</div>
+				<div class="fl_r">
+					<div class="cj_manage">CJ그룹계열사 바로가기 ＞</div>
+					<div class="f_cs_info">고객행복센터 <span>1668-1920</span></div>
+					<div class="foot_ccm"></div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

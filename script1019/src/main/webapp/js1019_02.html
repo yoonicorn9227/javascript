@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>효과,애니메이션2</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+		*{margin:0; padding: 0; list-style: none; font-size: 30px; text-align: center;}
+		div{width: 1000px; height: 600px; border: 1px solid black;}
+		h4{width: 1000px; height: 60px; text-align: center; }
+		ul li{width: 1000px; height: 60px; background: yellow; border: 1px solid black;}
+		</style>
+		<script>
+			$(function(){
+					$(".c01").stop().slideToggle(1000,"swing",function(){});//slideToggle1 
+					$(".c02").stop().slideToggle(1000,"swing",function(){});//slideToggle2
+			$("#t01").click(function(){
+					$(".c01").stop().slideToggle(1000,"swing",function(){});//slideToggle1 
+					$(".c02").stop().slideUp(1000,"swing",function(){});//slideToggle2
+			});//t01.click
+			
+			$("#t02").click(function(){
+					$(".c02").stop().slideToggle(1000,"swing",function(){});//slideToggle2
+					$(".c01").stop().slideUp(1000,"swing",function(){});//slideToggle1 
+				});	//t02.click
+				
+			});//제이쿼리 구문 선언
+		</script>
+	</head>
+	
+	<body>
+		<div>
+			<h4 id="t01">검색사이트</h4>
+				<ul class="c01">
+					<li>구글</li>
+					<li>네이버</li>
+					<li>다음</li>
+					<li>네이트</li>
+				</ul>
+			<h4 id="t02">배달사이트</h4>
+				<ul class="c02">
+					<li>배달의민족</li>
+					<li>요기요</li>
+					<li>쿠팡이츠</li>
+					<li>배달통</li>
+				</ul>
+		</div>
+	</body>
+</html>

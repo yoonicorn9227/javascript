@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ajax-비동기방식(非순차적)</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			*{margin: 0; padding: 0;}
+			section{width: 1000px; margin: 50px auto 0; text-align: center;}
+			h1{font-size: 40px;}
+			table{width: 100%; margin-top: 30px; }
+			table,th,td{border: 1px solid black; border-collapse: collapse;}
+			th,td{height: 60px; font-size: 20px; }			
+		</style>
+		<script>
+			$(function(){
+				var no=1;
+				$("#openBtn").click(function(){
+					var s_url="data/stu.json";
+					$.ajax({
+						url:s_url, //요청할 주소
+						type:"get",			//전송방식 -get,post
+						data:"",			//전달할 데이터 | 데이터 없으면 생략
+						dataType:"json", 	//요청한 데이터 타입 - xml,json,html,text
+						success:function(data){ //성공시
+							alert("데이터 성공!! ")
+							console.log(data[0]);
+						
+						var dhtml="";
+						for(var i=0;i<data.length;i++){
+								dhtml=dhtml+"<tr>"		
+								dhtml=dhtml+"<td>"+data[i].stuNo+"</td>";		
+								dhtml=dhtml+"<td>"+data[i].first_name+"</td>";		
+								dhtml=dhtml+"<td>"+data[i].email +"</td>";		
+								dhtml=dhtml+"<td>"+data[i].gender+"</td>";		
+								dhtml=dhtml+"<td>"+data[i].ip_address+"</td>";		
+								dhtml=dhtml+"</tr>";		
+							}//for		
+							
+							$("#cont").html(dhtml); //tbody에 데이터 추가
+							
+						}, //success
+						error:function(){
+							alert("데이터 실패!!");
+						}//error
+					});//ajax
+				});//click-openBtn
+				
+				
+			
+			});//jquery
+		</script>
+	</head>
+	
+	<body>
+		<section>
+			<h1>회원정보</h1>
+			<button id="openBtn">데이터 불러오기</button>
+			<table>
+				<colgroup>
+					<col width="10%">
+					<col width="20%">
+					<col width="20%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>학생번호</th>
+						<th>학생이름</th>
+						<th>학생메일</th>
+						<th>학생성별</th>
+						<th>ip주소</th>
+					</tr>
+				</thead>
+				<tbody id="cont">
+					
+				</tbody>
+			</table>
+		</section>
+	</body>
+</html>
