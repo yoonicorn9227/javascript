@@ -24,10 +24,41 @@
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
+});//제이쿼리 일반구문
+	var cno=0;
+$(function(){
+	$(".replyBtn").click(function(){
+	//입력한 내용이 댓글리스트에 추가가 될수 있도록 구현
+	var today= new Date();
+	var hdate = today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate();
+	var htime=today.getHours()+"-"+today.getMinutes()+"-"+today.getSeconds();
+	var hdata="";
+	hdata+="<ul id='"+ cno +"'>";
+	hdata+="<li class='name'>jjabcde <span>[ "+hdate+"&nbsp;&nbsp;"+htime+" ]</span></li>";
+	hdata+="<li class='txt'>"+$(".replyType").val()+"</li>";
+	hdata+="<li class='btn'>";
+	hdata+="<a class='rebtn'>수정</a>";
+	hdata+="<a class='rebtn' onclick='delBtn("+cno+")'>삭제</a>";
+	hdata+="</li>";
+	hdata+="</ul>";
+		
+		$(".replyBox").prepend(hdata);
+		$(".replynum").val(""); //입력된 댓글 비밀번호 내용삭제
+		$(".replyType").val(""); //입력된 내용삭제
 	
+		cno++;
+	$(".orange").text(cno);
+	});//click-replyBtn
+	
+});//jquery
 
+function delBtn(cno){
+	if(confirm((cno+1)+"번째 댓글을 삭제하시겠습니까?")){
+		$("#"+cno).remove();
+		alert("댓글을 삭제했습니다.");
+	}//if-cnfm
+}//delBtn()
 
-});
 </script>
 </head>
 <body>
@@ -258,40 +289,17 @@ $(document).ready(function() {
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
-								<p class="txt">총 <span class="orange">3</span> 개의 댓글이 달려있습니다.</p>
+								<p class="txt">총 <span class="orange">0</span> 개의 댓글이 달려있습니다.</p>
 								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
 								<textarea class="replyType"></textarea>
 							</li>
-							<li class="btn"><a href="#" class="replyBtn">등록</a></li>
+							<li class="btn"><a class="replyBtn">등록</a></li>
 						</ul>
 						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
 					</div>
 
 					<div class="replyBox">
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt"><textarea class="replyType"></textarea></li>
-							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
-							</li>
-						</ul>
-
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">대박!!! 이거 저한테 완전 필요한 이벤트였어요!!</li>
-							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
-							</li>
-						</ul>
-
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">
-								<a href="password.html" class="passwordBtn"><span class="orange">※ 비밀글입니다.</span></a>
-							</li>
-						</ul>
+						
 					</div>
 					<!-- //댓글 -->
 
