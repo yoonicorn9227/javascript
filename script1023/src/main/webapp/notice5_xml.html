@@ -3,83 +3,47 @@
 	<html>
 	<head>
 		<meta charset="UTF-8">
-		<title>집밥을 특별하게, 쿡킷</title>
+		<title>주식시세_xml</title>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/notice.css">
-		<style>
-			img{width: 50px;}
-		</style>
 		<script>
 			$(function(){
-				var pageNo = $("#pageNo").val();
-				var s_url="https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=qXrudNiVZeojDSJu5uD5Rhj9JjxlRkvuaf4plksHlnB9f7P1fL5j6p5phbkQMYO3KcM3hxbFhyHfHwKIWVTPug%3D%3D&numOfRows="+pageNo+"&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=xml";
 				$.ajax({
-						url:s_url, //요청할 주소
-						type:"get",			//전송방식 -get,post
-						data:"",			//전달할 데이터 | 데이터 없으면 생략
-						dataType:"xml", 	//요청한 데이터 타입 - xml,json,html,text
-						success:function(data){ //성공시
-							console.log(data)
-							alert("데이터 성공!! ")
-							console.log(data);
-							var sData=$(data).find("item")
-							console.log(sData.length);
-							
-							var hData="";
-							for(var i=0;i<sData.length;i++){
-								var galContentId = $(sData[i]).find("galContentId").text();
-								var galTitle = $(sData[i]).find("galTitle").text();
-								var galWebImageUrl = $(sData[i]).find("galWebImageUrl").text();
-								var galCreatedtime = $(sData[i]).find("galCreatedtime").text();
-								var galPhotographyLocation = $(sData[i]).find("galPhotographyLocation").text();
-								
-								console.log("1 : "+galContentId);
-								console.log("2 : "+galTitle);
-								console.log("3 : "+galWebImageUrl);
-								console.log("4 : "+galCreatedtime);
-								console.log("5 : "+galPhotographyLocation);
-								hData+="<tr>";
-								hData+="<td>"+galContentId +"</td>";
-								hData+="<td><a href='#'>"+galTitle +"</a></td>";
-								hData+="<td>"+galCreatedtime +"</td>";
-								hData+="<td>"+galPhotographyLocation +"</td>";
-								hData+="<td><img src='"+galWebImageUrl+"'></td>";
-								hData+="</tr>";
-							}//for
-							$("#cont").html(hData)
-						}, //success
-						error:function(){
-							alert("데이터 실패!!");
-						}//error
-					});//ajax
-					
-					//페이지 변경
-					$("pageNo").change(function(){
+					url:"https://api.odcloud.kr/api/15049022/v1/uddi:2bacaaaa-5b33-4499-be56-f5e0eef9566e?page=1&perPage=20&returnType=XML&serviceKey=qXrudNiVZeojDSJu5uD5Rhj9JjxlRkvuaf4plksHlnB9f7P1fL5j6p5phbkQMYO3KcM3hxbFhyHfHwKIWVTPug%3D%3D",
+					type:"get",
+					data:"",
+					dataType:"xml",
+					success:function(data){
+						alert("데이터 불러오기 성공!")
+						console.log(data);
+						var xdata = $(data).find("item");
+						console.log(xdata);
+						console.log(xdata.find("col")[0]);
+						console.log(xdata.find("col")[1]);
+						console.log(xdata.find("col")[2]);
 						
-						pageNo = $("#pageNo").val();
-						s_url="https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=qXrudNiVZeojDSJu5uD5Rhj9JjxlRkvuaf4plksHlnB9f7P1fL5j6p5phbkQMYO3KcM3hxbFhyHfHwKIWVTPug%3D%3D&numOfRows="+pageNo+"&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=xml";
-						$.ajax({
-							url:s_url, //요청할 주소
-							type:"get",			//전송방식 -get,post
-							data:"",			//전달할 데이터 | 데이터 없으면 생략
-							dataType:"xml", 	//요청한 데이터 타입 - xml,json,html,text
-							success:function(data){ //성공시
-								console.log(data)
-								alert("데이터 성공!! ")
-							}, //success
-							error:function(){
-								alert("데이터 실패!!");
-							}//error
-						});//ajax
-					});
-				
+						var hdata="";
+						/*
+						for(var i=0;i<xdata.length;i++){
+							var plane_Nm = $(xdata[i]).find("col")[1].text();
+							var ac_date = $(xdata[i]).find("col")[2].text();
+							hdata+="<tr>";
+							hdata+="<td>"+plane_Nm+"</td>";
+							hdata+="<td>"+ac_date+"</td>";
+							hdata+="</tr>";
+						}//for*/
+						$("#cont").html(hdata);
+						
+					},//success
+					error:function(){
+						alert("데이터 불러오기 실패!")
+					}//error
+						
+				});//ajax.board
 				
 			});//제이쿼리
 		</script>
-		<style>
-			#pageNo{width: 120px; height: 40px; margin-top:20px; float:right; }
-		</style>
 	</head>
 	<body>
 		<nav id="top">
@@ -118,13 +82,6 @@
 		</header>
 		<section id="sect">
 			<h1 id="tit" class="title" >고객행복센터</h1>
-			<div>
-				<select name="pageNo" id="pageNo">
-					<option value="10">10개씩</option>
-					<option value="20">20개씩</option>
-					<option value="30">30개씩</option>
-				</select>
-			</div>
 			<!-- 검색창 영역  -->
 			<div class="f_search">
 				<h2>NOTICE 검색</h2>
@@ -144,19 +101,13 @@
 				<div class="tb_row">
 					<table>
 						<colgroup>
-						   <col width="10%">
-						   <col width="54%">
-						   <col width="13%">
-						   <col width="13%">
-						   <col width="10%">
+						   <col width="50%">
+						   <col width="50%">
 						</colgroup>
 						<thead>
 							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>제작일</th>
-								<th>관광장소</th>
-								<th>이미지</th>
+								<th>항공사 사고기종</th>
+								<th>일자</th>
 							</tr>
 						</thead>
 						<tbody id="cont">
